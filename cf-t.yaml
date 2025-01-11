@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  MyEC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: ami-0f6fe3c5b0f246063
+      InstanceType: 't3.micro'
+      SecurityGroupIds:
+        - 'sg-01771d72d2c99929d'
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          echo "Hello Hiba Iam EC2" > /var/www/html/index.html
+          yum install -y httpd
+          service httpd start
+          chkconfig httpd on
