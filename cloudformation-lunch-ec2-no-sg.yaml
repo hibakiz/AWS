@@ -3,11 +3,11 @@ Resources:
   MyEC2Instance:
     Type: 'AWS::EC2::Instance'
     Properties:
-      ImageId: ami-0f6fe3c5b0f246063
-      InstanceType: 't3.micro'
+      ImageId: ami-0f6fe3c5b0f246063 #change the ImageID
+      InstanceType: 't3.micro' #change the type
       SecurityGroupIds:
-        - 'sg-01771d72d2c99929d'
-      UserData:
+        - 'sg-xxxxxxxxxx'  #write your Security Group ID
+      UserData: #Website
         Fn::Base64: !Sub |
           #!/bin/bash
           echo "Hello Hiba Iam EC2" > /var/www/html/index.html
