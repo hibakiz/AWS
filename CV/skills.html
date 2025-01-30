@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Resume</title>
+	<link rel="stylesheet" type="text/css" href="cv.css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+            }
+    
+            header {
+                background-color: #222;
+                color: white;
+                padding: 20px;
+            }
+    
+            .skills {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+                padding: 20px;
+                max-width: 800px;
+                margin: auto;
+            }
+    
+            .skill {
+                background: white;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
+            }
+    
+            .skill:hover {
+                transform: translateY(-5px);
+                background-color: black;
+                
+            }
+             .skill:hover h2, .skill:hover h3 {
+                color: white;
+             }
+    
+
+        </style>
+</head>
+<body>
+	<div class="wraper">
+		<div class="container">
+		<div class="left-content p-30">
+			<div class="logo">
+				<a href="cv.html">
+					<span>My</span>
+					<span>Resume</span>
+				</a>
+			</div>
+			<div class="nav">
+				<ul>
+					<li><a href="#Home">Home</a></li>
+					<li><a href="About.html">About</a></li>
+					<li><a href="exp.html">Experience</a></li>
+					<li><a href="skills.html">Skills</a></li>
+					<li><a href="cert.html">Certiffications</a></li>
+					<li><a href="projects.html">Projects</a></li>
+				</ul>
+			</div>
+			<div class="left-footer">
+				<div class="social-icons">
+					<ul>
+						<li><a href="https://www.linkedin.com/in/hiba-salah-sd"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+						<li><a href="https://www.credly.com/users/hiba-salah"><i class="fa fa-Credly" aria-hidden="true"><svg width="20" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0C5.372 0 0 5.373 0 12s5.372 12 12 12 12-5.373 12-12S18.628 0 12 0z" fill="#FF6B00"/>
+                            <text x="5" y="15" font-family="Arial" font-size="5px" fill="white">Credly</text>
+                        </svg></i></a></li>
+					</ul>
+				</div>
+				<div class="foot-contact">
+					<ul>
+						<li><a href="mailto:hiba.s.s103@gmail.com">hiba.s.s103@gmail.com</a></li>
+						<li>+966508206290</li>
+					</ul>
+				</div>
+				
+<a href="https://codepen.io/Pavan_Ramshetty/pen/KYLPzq">Template Source</a>
+			</div>
+
+		</div>
+		<div class="main-content">
+
+        <section class="skills">
+            <div class="skill">
+                <div class="sk">
+                    <h3>Cloud Technologies</h3>
+                    <h2> Amazon Web Services (AWS) - EC2, VPC, S3, ELB, CloudFormation, RDS, IAM, NACLs, Security Groups.</h2>
+                </div>
+            </div>
+            <div class="skill">
+                <h3>Network Security</h3>
+                <h2> Firewalls (FortiGate), Intrusion Detection/Prevention Systems (IDS/IPS), 
+                    Web Application Firewalls (WAF), VPNs, Email Security (FortiMail).
+                    </h2>
+            </div>
+            <div class="skill">
+                <h3>Networking</h3>
+                <h2> TCP/IP, BGP, OSPF, VLANs, Network Segmentation</h2>
+            </div>
+            <div class="skill">
+                <h3>Operrating Systems</h3>
+                <h2> Windows, Linux.</h2>
+            </div>
+            <div class="skill">
+                <h3>Programming & Scripting </h3>
+                <h2> Python, C, Bash.</h2>
+            </div>
+        </section>
+
+		</div>
+
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume</title>
+	<link rel="stylesheet" type="text/css" href="cv.css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .project {
+            background-color: #fff;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .project h2 {
+            margin-top: 0;
+        }
+        .project p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .project-button {
+            background-color: #0073e6;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .project-button:hover {
+            background-color: #005bb5;
+        }
+        .project-preview {
+            margin-top: 15px;
+            display: none;
+            padding: 10px;
+            background-color: #e6f7ff;
+            border-radius: 5px;
+            border: 1px solid #b3d8ff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wraper">
+		<div class="container">
+		<div class="left-content p-30">
+			<div class="logo">
+				<a href="cv.html">
+					<span>My</span>
+					<span>Resume</span>
+				</a>
+			</div>
+			<div class="nav">
+				<ul>
+					<li><a href="#Home">Home</a></li>
+					<li><a href="About.html">About</a></li>
+					<li><a href="exp.html">Experience</a></li>
+					<li><a href="skills.html">Skills</a></li>
+					<li><a href="cert.html">Certiffications</a></li>
+					<li><a href="projects.html">Projects</a></li>
+				</ul>
+			</div>
+			<div class="left-footer">
+				<div class="social-icons">
+					<ul>
+						<li><a href="https://www.linkedin.com/in/hiba-salah-sd"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+						<li><a href="https://www.credly.com/users/hiba-salah"><i class="fa fa-Credly" aria-hidden="true"><svg width="20" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0C5.372 0 0 5.373 0 12s5.372 12 12 12 12-5.373 12-12S18.628 0 12 0z" fill="#FF6B00"/>
+                            <text x="5" y="15" font-family="Arial" font-size="5px" fill="white">Credly</text>
+                        </svg></i></a></li>
+					</ul>
+				</div>
+				<div class="foot-contact">
+					<ul>
+						<li><a href="mailto:hiba.s.s103@gmail.com">hiba.s.s103@gmail.com</a></li>
+						<li>+966508206290</li>
+					</ul>
+				</div>
+				
+<a href="https://codepen.io/Pavan_Ramshetty/pen/KYLPzq">Template Source</a>
+			</div>
+
+		</div>
+	<div class="main-content">
+
+        <div class="project">
+                <h2>Provided a demo for a client's PHP Laravel web app using Elastic Beanstalk and MySQL DB</h2>
+                <p>I deployed a PHP Laravel web application for a client using AWS Elastic Beanstalk and integrated it with a MySQL database. This allowed the client to test their application in a scalable, managed environment.</p>    
+        </div>
+        <div class="project">
+            <h2>Reduced EC2 cost using Lambda functions and EventBridge</h2>
+            <p>I created two Lambda functions to automate the starting and stopping of EC2 instances at specific times. The functions are triggered by scheduled events using Amazon EventBridge, optimizing costs by running EC2 instances only during business hours.</p>
+        </div>
+        <div class="project">
+            <h2>Deployed EC2 instances using CloudFormation</h2>
+            <p>I automated the deployment of EC2 instances by using AWS CloudFormation, which helped in creating infrastructure as code for better scalability and management.</p>
+        </div>
+        <div class="project">
+            <h2>Converted CloudWatch events into CSV format using Python</h2>
+            <p>I created a Python script to process CloudWatch events and convert them into CSV format. To access AWS resources from my local environment, I set up an IAM user and configured CLI access.</p>
+        </div>
+        <div class="project">
+            <h2>Deployed an HTML, CSS, JS game from GitHub to S3 using CodePipeline and added CloudFront</h2>
+            <p>I used AWS CodePipeline to automate the deployment of a game (written in HTML, CSS, and JavaScript) from GitHub to an S3 bucket, and integrated CloudFront for fast global delivery.</p>
+        </div>
+        <div class="project">
+            <h2>Deployed a React app using AWS Amplify</h2>
+            <p>I used AWS Amplify to deploy a React application, streamlining the deployment process and utilizing features like authentication, APIs, and hosting with minimal configuration.</p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
