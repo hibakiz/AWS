@@ -668,3 +668,25 @@ Responsive CSS — sidebar becomes a top bar
 .btn-download:hover {
     background: #e5548e;
 }
+.lang-item {
+    margin: 12px 0;
+}
+
+.lang-item span {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.lang-bar {
+    background: #eee;
+    border-radius: 10px;
+    height: 8px;
+    overflow: hidden;
+}
+
+.lang-fill {
+    background: #fa68a0;
+    height: 100%;
+    border-radius: 10px;
+}
