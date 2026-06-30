@@ -187,12 +187,12 @@
             <p><strong>Tech stack:</strong> AWS Amplify, React</p>
         </div>
 
-         <div class="project">
+        <div class="project">
             <h2>This Website — Hosted on S3 & CloudFront</h2>
-            <p><strong>Goal:</strong> Put cloud and security skills into practice by hosting this very portfolio on production-grade AWS infrastructure rather than a third-party site builder.</p>
-            <p><strong>What I did:</strong> Configured an S3 bucket for static website hosting, then placed CloudFront in front of it as a CDN to serve content quickly to visitors anywhere in the world while reducing direct load on the origin bucket.</p>
-            <p><strong>Outcome:</strong> My first production AWS deployment — proof that the skills on this page aren't just theoretical, they're what's actually running this site right now.</p>
-            <p><strong>Tech stack:</strong> Amazon S3, Amazon CloudFront</p>
+            <p><strong>Goal:</strong> Put cloud and security skills into practice by hosting this very portfolio on production-grade AWS infrastructure rather than a third-party site builder, with automated deployment on every update.</p>
+            <p><strong>What I did:</strong> Configured an S3 bucket for static website hosting, then placed CloudFront in front of it as a CDN to serve content quickly to visitors anywhere in the world while reducing direct load on the origin bucket. Built a CI/CD pipeline that syncs this repo from GitHub straight to the S3 bucket on every push, then automatically triggers a CloudFront cache invalidation so changes go live immediately instead of being served stale from cached edge locations.</p>
+            <p><strong>Outcome:</strong> My first production AWS deployment — proof that the skills on this page aren't just theoretical, they're what's actually running this site right now. Updating the site is now as simple as pushing to GitHub: the new files sync to S3 and the CloudFront cache clears automatically, with no manual upload or console work required.</p>
+            <p><strong>Tech stack:</strong> Amazon S3, Amazon CloudFront, GitHub, CI/CD pipeline (repo sync + cache invalidation)</p>
         </div>
      
 
