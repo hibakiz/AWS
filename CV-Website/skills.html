@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Skills</title>
-    <link rel="icon" href="image/logo.jpg" type="image/jpg" sizes="16x16">
-    <link rel="stylesheet" type="text/css" href="cv.css">
-	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <title>Skills</title>
+        <link rel="icon" href="image/logo.jpg" type="image/jpg" sizes="16x16">
+        <link rel="stylesheet" type="text/css" href="cv.css">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="nav.js"></script>
+    </head>
     
     <style>
     
@@ -15,143 +17,143 @@
     padding: 0;
     font-family: Arial, sans-serif;
     box-sizing: border-box;
-}
+    }
 
-/* Responsive container */
-.wraper {
+    /* Responsive container */
+    .wraper {
     display: flex;
     flex-direction: column;
-}
+    }
 
-.container {
+    .container {
     max-width: 1200px;
     margin: auto;
     padding: 20px;
-}
+    }   
 
-/* Skills section */
-.skills {
+    /* Skills section */
+    .skills {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     padding: 20px;
-}
+    }
 
-.skill {
+    .skill {
     background: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-}
+    }
 
-.skill:hover {
+    .skill:hover {
     transform: translateY(-5px);
     background-color: black;
-}
+    }
 
-.skill:hover h2, .skill:hover h3, .skill:hover h1 {
+    .skill:hover h2, .skill:hover h3, .skill:hover h1 {
     color: white;
-}
+    }
 
-    
-
-</style>
-</head>
-<body>
-	<div class="wraper">
-		<div class="container">
-            <div class="left-content p-30">
-                <div class="logo">
-                    <a href="index.html">
-                        <span>My</span>
-                        <span>Resume</span>
-                    </a>
-                </div>
-                <div class="nav">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="About.html">About</a></li>
-                        <li><a href="exp.html">Experience</a></li>
-                        <li><a href="skills.html">Skills</a></li>
-                        <li><a href="cert.html">Certiffications</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                    </ul>
-                </div>
-                <div class="left-footer">
-                    <div class="social-icons">
+    </style>
+    <body>
+        <div class="wraper">
+            <div class="container">
+                <div class="left-content p-30">
+                    <div class="logo">
+                        <a href="index.html">
+                            <span>My</span>
+                            <span>Resume</span>
+                        </a>
+                    </div>
+                    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                    </button>
+                    <div class="nav">
                         <ul>
-                            <li><a href="https://www.linkedin.com/in/hiba-salah-sd"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-                            <li><a href="https://www.credly.com/users/hiba-salah"><i class="fa fa-Credly" aria-hidden="true"><svg width="20" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 0C5.372 0 0 5.373 0 12s5.372 12 12 12 12-5.373 12-12S18.628 0 12 0z" fill="#FF6B00"/>
-                                <text x="5" y="15" font-family="Arial" font-size="5px" fill="white">Credly</text>
-                            </svg></i></a></li>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="About.html">About</a></li>
+                            <li><a href="exp.html">Experience</a></li>
+                            <li><a href="skills.html">Skills</a></li>
+                            <li><a href="cert.html">Certifications</a></li>
+                            <li><a href="projects.html">Projects</a></li>
                         </ul>
                     </div>
-                    <div class="foot-contact">
-                        <ul>
-                            <li><a href="mailto:hiba.s.s103@gmail.com">hiba.s.s103@gmail.com</a></li>
+                    <div class="left-footer">
+                        <div class="social-icons">
+                            <ul>
+                                <li><a href="https://www.linkedin.com/in/hiba-salah-sd"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.credly.com/users/hiba-salah"><i class="fa fa-Credly" aria-hidden="true"><svg width="20" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 0C5.372 0 0 5.373 0 12s5.372 12 12 12 12-5.373 12-12S18.628 0 12 0z" fill="#FF6B00"/>
+                                    <text x="5" y="15" font-family="Arial" font-size="5px" fill="white">Credly</text>
+                                </svg></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="foot-contact">
+                            <ul>
+                                <li><a href="mailto:hiba.s.s103@gmail.com">hiba.s.s103@gmail.com</a></li>
+                            
+                            </ul>
+                        </div>
                         
-                        </ul>
+                        <a href="https://codepen.io/Pavan_Ramshetty/pen/KYLPzq">Template Source</a>
                     </div>
-                    
-                    <a href="https://codepen.io/Pavan_Ramshetty/pen/KYLPzq">Template Source</a>
                 </div>
-            </div>
 
-		    <div class="main-content">
-                <div class="skill">
-                        <h1>Cloud Technologies</h1>
+                <div class="main-content">
+                    <div class="skill">
+                            <h1>Cloud Technologies</h1>
+                            <h3>
+                                <li>Amazon Web Services (AWS) - EC2, CloudFront, VPC, S3, ELB, RDS, IAM, NACLs, Security Groups.</li>
+                                <br>
+                                <li>Automation & IaC - CloudFormation and Terraform.</li>
+                                <br>
+                                <li>Security & Access Management - IAM, Security Groups, NACLs, and compliance best practices.</li>
+                                <br>
+
+                            </h3>
+                    </div>
+                    <div class="skill">
+                        <h1>Networks Security</h1>
                         <h3>
-                            <li>Amazon Web Services (AWS) - EC2, CloudFront, VPC, S3, ELB, RDS, IAM, NACLs, Security Groups.</li>
+                            <li>Firewalls & Security Appliances - FortiGate, FortiMail, FortiWeb (WAF).</li>
                             <br>
-                            <li>Automation & IaC - CloudFormation and Terraform.</li>
+                            <li>Intrusion Detection/Prevention - IDS/IPS configuration and monitoring.</li>
                             <br>
-                            <li>Security & Access Management - IAM, Security Groups, NACLs, and compliance best practices.</li>
+                            <li>VPNs & Remote Access - SSL, IPsec, Site-to-site, remote access, and secure connectivity.</li>
                             <br>
-
+                            <li>Security Policies & Best Practices: Network segmentation, access control, and threat mitigation.</li>
+                            <br>
                         </h3>
-                </div>
-                <div class="skill">
-                    <h1>Networks Security</h1>
-                    <h3>
-                        <li>Firewalls & Security Appliances - FortiGate, FortiMail, FortiWeb (WAF).</li>
-                        <br>
-                        <li>Intrusion Detection/Prevention - IDS/IPS configuration and monitoring.</li>
-                        <br>
-                        <li>VPNs & Remote Access - SSL, IPsec, Site-to-site, remote access, and secure connectivity.</li>
-                        <br>
-                        <li>Security Policies & Best Practices: Network segmentation, access control, and threat mitigation.</li>
-                        <br>
-                    </h3>
+
+                    </div>
+                    <div class="skill">
+                        <h1>Networking</h1>
+                        <h3> 
+                            <li>Routing & Switching - TCP/IP, BGP, OSPF, VLANs, Network Segmentation.</li>
+                            <br>
+                            <li>VPNs & WAN Technologies - Site-to-site, SD-WAN, and remote access solutions.</li>
+                            <br>
+                            <li>Network Design & Optimization - High availability, redundancy, and performance tuning.</li>
+                            <br>
+                            <li>Cisco Expertise - Configuration and management of Cisco routers, switches, and network devices.</li>
+                            <br>
+                        </h3>
+                    </div>
+                    <div class="skill">
+                        <h1>Operating Systems</h1>
+                        <h3> Windows, Linux.</h3>
+                    </div>
+                    <div class="skill">
+                        <h1>Programming & Scripting </h1>
+                        <h3> Python, C, Bash.</h3>
+                    </div>
 
                 </div>
-                <div class="skill">
-                    <h1>Networking</h1>
-                    <h3> 
-                        <li>Routing & Switching - TCP/IP, BGP, OSPF, VLANs, Network Segmentation.</li>
-                        <br>
-                        <li>VPNs & WAN Technologies - Site-to-site, SD-WAN, and remote access solutions.</li>
-                        <br>
-                        <li>Network Design & Optimization - High availability, redundancy, and performance tuning.</li>
-                        <br>
-                        <li>Cisco Expertise - Configuration and management of Cisco routers, switches, and network devices.</li>
-                        <br>
-                    </h3>
-                </div>
-                <div class="skill">
-                    <h1>Operating Systems</h1>
-                    <h3> Windows, Linux.</h3>
-                </div>
-                <div class="skill">
-                    <h1>Programming & Scripting </h1>
-                    <h3> Python, C, Bash.</h3>
-                </div>
 
-		    </div>
-
-		</div>
-	</div>
-</div>
-</body>
+            </div>
+        </div>
+    </div>
+    </body>
 </html>
