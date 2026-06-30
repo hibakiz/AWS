@@ -641,3 +641,9 @@ Responsive CSS — sidebar becomes a top bar
     font-size: 13px;
   }
 }
+.tagline {
+    font-size: 15px;
+    font-style: italic;
+    color: rgba(0, 0, 0, 0.5);
+    margin: 10px 0px 20px 0px;
+}
