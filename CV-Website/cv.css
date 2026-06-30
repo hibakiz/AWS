@@ -686,10 +686,13 @@ Responsive CSS — sidebar becomes a top bar
 }
 
 .lang-fill {
-    background: #fa68a0;
+    background: #000000;
     height: 100%;
     border-radius: 10px;
 }
 .skill:hover .lang-item span {
     color: white;
+}
+.skill:hover .lang-fill {
+    background: #e5548e;
 }
