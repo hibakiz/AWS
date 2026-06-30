@@ -647,3 +647,24 @@ Responsive CSS — sidebar becomes a top bar
     color: rgba(0, 0, 0, 0.5);
     margin: 10px 0px 20px 0px;
 }
+.cv-download {
+    margin: 15px 0px;
+}
+
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fa68a0;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
+}
+
+.btn-download:hover {
+    background: #e5548e;
+}
