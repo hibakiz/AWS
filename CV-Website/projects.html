@@ -100,51 +100,98 @@
 	<div class="main-content">
 
         <div class="project">
-                <h2>Provided a demo for a client's PHP Laravel web app using Elastic Beanstalk and MySQL DB</h2>
-                <p>I deployed a PHP Laravel web application for a client using AWS Elastic Beanstalk and integrated it with a MySQL database. This allowed the client to test their application in a scalable, managed environment.</p>    
-        </div>
-        <div class="project">
-            <h2>Serverlesspresso project</h2>
-            <p>Built a serverless backend for a pop-up coffee shop using Step Functions, DynamoDB, Lambda, EventBridge, API Gateway, Cognito, and IoT Core to manage real-time order workflows across multiple apps.</p>
-        </div>
-        <div class="project">
-            <h2> AWS WAF Web Application Protection</h2>
-            <p> I deployed a CloudFormation stack to set up a test environment, configured bot control, applied managed and custom rules, monitored traffic with CloudWatch and Athena, and protected web forms using CAPTCHA.</p>
-        </div>
-        <div class="project">
-            <h2>Secure Remote Access with AWS Verified Access</h2>
-            <p>Setting up remote access to VPC resources using AWS Verified Access, Cognito, EC2 Instance Connect Endpoint, and a CloudFormation stack to control and secure application access.</p>
+            <h2>Client PHP Laravel Web App — AWS Elastic Beanstalk & MySQL</h2>
+            <p><strong>Goal:</strong> Give a client a scalable, managed environment to demo and test their PHP Laravel web application before committing to production infrastructure.</p>
+            <p><strong>What I did:</strong> Deployed the Laravel application using AWS Elastic Beanstalk, which handled provisioning, load balancing, and auto-scaling configuration behind the scenes. Connected the app to a managed MySQL database (Amazon RDS) for persistent data storage, and configured environment variables and application settings to match the client's requirements.</p>
+            <p><strong>Outcome:</strong> The client was able to test their application in a live, production-like environment without managing any underlying servers, giving them confidence in the app's behavior before a full production rollout.</p>
+            <p><strong>Tech stack:</strong> AWS Elastic Beanstalk, Amazon RDS (MySQL), PHP, Laravel</p>    
         </div>
         
+        <div class="project">
+            <h2>Serverlesspresso — Event-Driven Order Management System</h2>
+            <p><strong>Goal:</strong> Build a fully serverless backend capable of managing real-time order workflows for a pop-up coffee shop, coordinating state across multiple front-end apps (customer ordering, barista display, order pickup).</p>
+            <p><strong>What I did:</strong> Designed an event-driven architecture using AWS Step Functions to orchestrate the order lifecycle as a state machine (ordered → in progress → ready → picked up). Used DynamoDB to persist order and queue state, Lambda functions to handle business logic at each stage, EventBridge to route events between decoupled components, API Gateway to expose REST endpoints to the front-end apps, Cognito to handle anonymous/guest authentication for ordering, and IoT Core to push real-time order status updates to connected displays.</p>
+            <p><strong>Outcome:</strong> A working, fully serverless order system with no servers to patch or scale manually — the architecture scales automatically with order volume and demonstrates production-grade event-driven design patterns.</p>
+            <p><strong>Tech stack:</strong> Step Functions, DynamoDB, Lambda, EventBridge, API Gateway, Cognito, IoT Core</p>
+        </div>
         
+        <div class="project">
+            <h2>AWS WAF — Web Application Firewall Protection</h2>
+            <p><strong>Goal:</strong> Protect a web application against common attack patterns (bots, OWASP Top 10 threats, automated form abuse) using a managed, cloud-native firewall layer.</p>
+            <p><strong>What I did:</strong> Deployed a CloudFormation stack to stand up a repeatable test environment, then configured AWS WAF with Bot Control to detect and block automated traffic, layered in AWS Managed Rule Groups alongside custom rules tailored to the application's traffic patterns, and added CAPTCHA challenges on sensitive web forms to stop scripted submissions. Set up monitoring using CloudWatch metrics and dashboards, and used Athena to run SQL queries directly against WAF logs in S3 for deeper traffic analysis.</p>
+            <p><strong>Outcome:</strong> A layered, monitored defense-in-depth setup — combining managed rules, custom rules, bot detection, and human-verification challenges — fully deployed and reproducible as infrastructure as code.</p>
+            <p><strong>Tech stack:</strong> AWS WAF, CloudFormation, CloudWatch, Amazon Athena, S3</p>
+        
+            <div class="project">
+            <h2>Secure Remote Access — AWS Verified Access</h2>
+            <p><strong>Goal:</strong> Provide secure, identity-based access to private VPC resources without relying on a traditional VPN or exposed bastion host.</p>
+            <p><strong>What I did:</strong> Deployed AWS Verified Access to enforce per-request access policies based on user identity and device context, using Cognito as the identity provider for authentication. Used an EC2 Instance Connect Endpoint to allow secure SSH access into private instances without public IPs, and packaged the entire setup as a CloudFormation stack so the architecture could be deployed and torn down consistently.</p>
+            <p><strong>Outcome:</strong> A zero-trust style access model — every request is evaluated against identity and policy rather than relying on network location alone, eliminating the need for a traditional always-on VPN.</p>
+            <p><strong>Tech stack:</strong> AWS Verified Access, Cognito, EC2 Instance Connect Endpoint, CloudFormation</p>
+        </div>
 
         <div class="project">
-            <h2>Amazon Bedrock Exploration</h2>
-            <p>Set up a SageMaker domain and JupyterLab, invoked models using invokeModel() and invoke_model_with_response_stream(), compared model responses, utilized Amazon Nove for multimodal processing, and analyzed model hallucinations, factual accuracy, and challenges beyond RAG.</p>    
+            <h2>Amazon Bedrock Exploration — Foundation Models & RAG</h2>
+            <p><strong>Goal:</strong> Get hands-on with generative AI on AWS — understanding how to invoke foundation models programmatically and where their limitations actually show up in practice.</p>
+            <p><strong>What I did:</strong> Set up a SageMaker domain with JupyterLab as the development environment, then invoked Bedrock foundation models directly using both <code>invokeModel()</code> for single responses and <code>invoke_model_with_response_stream()</code> for streamed output. Compared response quality, latency, and behavior across different models, tested Amazon Nova for multimodal tasks (text + image input), and ran structured experiments to surface where models hallucinate, where factual accuracy breaks down, and where Retrieval-Augmented Generation (RAG) helps — and where it doesn't fully solve the problem.</p>
+            <p><strong>Outcome:</strong> Practical, first-hand understanding of foundation model behavior and limitations beyond what's covered in documentation — directly applicable to evaluating AI tooling for security and operational use cases.</p>
+            <p><strong>Tech stack:</strong> Amazon Bedrock, SageMaker, JupyterLab, Amazon Nova, Python</p>
         </div>
+        
         <div class="project">
-            <h2>AWS Serverless Patterns</h2>
-            <p>Built and deployed serverless resources using AWS SAM and Terraform. Created a DynamoDB table, developed Lambda functions to interact with it, deployed an API Gateway for REST API access, configured Cognito for authentication, implemented a Lambda authorizer for policy enforcement, and set up CloudWatch alarms with SNS notifications for monitoring and alerts.</p>    
+            <h2>AWS Serverless Patterns — SAM & Terraform</h2>
+            <p><strong>Goal:</strong> Build and deploy a serverless REST API end-to-end using two different infrastructure-as-code approaches to compare workflows.</p>
+            <p><strong>What I did:</strong> Created a DynamoDB table as the data layer, then built Lambda functions to handle create/read/update operations against it. Deployed an API Gateway in front of the Lambda functions to expose a REST API, configured Cognito for user authentication, and implemented a custom Lambda authorizer to enforce fine-grained access policies on individual API routes. Set up CloudWatch alarms tied to SNS notifications so I'd be alerted automatically on errors or unusual activity. Deployed the whole stack using both AWS SAM and Terraform to compare the two IaC tools directly.</p>
+            <p><strong>Outcome:</strong> A fully functional, authenticated, monitored serverless API — and practical experience contrasting AWS-native (SAM) versus cloud-agnostic (Terraform) infrastructure tooling.</p>
+            <p><strong>Tech stack:</strong> AWS SAM, Terraform, Lambda, DynamoDB, API Gateway, Cognito, CloudWatch, SNS</p>
         </div>
+        
         <div class="project">
-            <h2>Reduced EC2 cost using Lambda functions and EventBridge</h2>
-            <p>I created two Lambda functions to automate the starting and stopping of EC2 instances at specific times. The functions are triggered by scheduled events using Amazon EventBridge, optimizing costs by running EC2 instances only during business hours.</p>
+            <h2>EC2 Cost Optimization — Lambda & EventBridge Scheduling</h2>
+            <p><strong>Goal:</strong> Reduce unnecessary EC2 spend by ensuring instances only run during actual business hours instead of 24/7.</p>
+            <p><strong>What I did:</strong> Wrote two Lambda functions — one to start EC2 instances, one to stop them — and triggered each on a schedule using Amazon EventBridge rules (cron-based scheduled events), so instances spin up automatically each morning and shut down each evening without any manual intervention.</p>
+            <p><strong>Outcome:</strong> Automated, hands-off cost optimization — instances only incur compute charges during the hours they're actually needed, directly cutting cloud spend with zero ongoing manual effort.</p>
+            <p><strong>Tech stack:</strong> AWS Lambda, Amazon EventBridge, EC2</p>
         </div>
+        
         <div class="project">
-            <h2>Deployed EC2 instances using CloudFormation</h2>
-            <p>I automated the deployment of EC2 instances by using AWS CloudFormation, which helped in creating infrastructure as code for better scalability and management.</p>
+            <h2>Infrastructure as Code — EC2 Deployment via CloudFormation</h2>
+            <p><strong>Goal:</strong> Move away from manual, click-through EC2 provisioning toward a repeatable, version-controlled deployment process.</p>
+            <p><strong>What I did:</strong> Authored a CloudFormation template to define EC2 instance configuration, networking, and security group rules as code, allowing the entire environment to be deployed, updated, or torn down consistently from a single source of truth.</p>
+            <p><strong>Outcome:</strong> A reproducible, version-controlled deployment process — eliminating configuration drift and manual setup errors, and making environment scaling straightforward.</p>
+            <p><strong>Tech stack:</strong> AWS CloudFormation, EC2</p>
         </div>
+        
         <div class="project">
-            <h2>Converted CloudWatch events into CSV format using Python</h2>
-            <p>I created a Python script to process CloudWatch events and convert them into CSV format. To access AWS resources from my local environment, I set up an IAM user and configured CLI access.</p>
+            <h2>CloudWatch Events to CSV — Python Automation</h2>
+            <p><strong>Goal:</strong> Make CloudWatch event data easier to analyze and report on outside the AWS console.</p>
+            <p><strong>What I did:</strong> Set up an IAM user with scoped permissions and configured the AWS CLI for local access, then wrote a Python script using Boto3 to pull CloudWatch events and transform them into structured CSV output suitable for reporting, spreadsheets, or further analysis.</p>
+            <p><strong>Outcome:</strong> A reusable script that turns raw CloudWatch event data into a portable, analysis-ready format — useful for audits, reporting, and identifying patterns over time.</p>
+            <p><strong>Tech stack:</strong> Python, Boto3, AWS CLI, IAM, CloudWatch</p>
         </div>
+        
         <div class="project">
-            <h2>Deployed an HTML, CSS, JS game from GitHub to S3 using CodePipeline and added CloudFront</h2>
-            <p>I used AWS CodePipeline to automate the deployment of a game (written in HTML, CSS, and JavaScript) from GitHub to an S3 bucket, and integrated CloudFront for fast global delivery.</p>
+            <h2>CI/CD Game Deployment — CodePipeline, S3 & CloudFront</h2>
+            <p><strong>Goal:</strong> Automate deployment of a browser-based HTML/CSS/JS game so new commits go live automatically, with fast global delivery.</p>
+            <p><strong>What I did:</strong> Connected a GitHub repository to AWS CodePipeline so every push triggers an automatic deployment to an S3 bucket configured for static website hosting. Added CloudFront in front of the S3 bucket as a CDN to cache content at edge locations worldwide, reducing load times for users regardless of location.</p>
+            <p><strong>Outcome:</strong> A fully automated CI/CD pipeline — push to GitHub, and the live game updates within minutes, with no manual deployment steps and fast load times globally.</p>
+            <p><strong>Tech stack:</strong> AWS CodePipeline, S3, CloudFront, GitHub, HTML/CSS/JavaScript</p>
         </div>
+        
         <div class="project">
-            <h2>Deployed a React app using AWS Amplify</h2>
-            <p>I used AWS Amplify to deploy a React application, streamlining the deployment process and utilizing features like authentication, APIs, and hosting with minimal configuration.</p>
+             <h2>React App Deployment — AWS Amplify</h2>
+            <p><strong>Goal:</strong> Deploy a React application quickly with authentication and API support, minimizing manual infrastructure setup.</p>
+            <p><strong>What I did:</strong> Used AWS Amplify to handle the build, deployment, and hosting pipeline for a React application, leveraging Amplify's built-in support for authentication and API integration rather than wiring up each service manually.</p>
+            <p><strong>Outcome:</strong> A production-ready React app deployed with authentication and API access configured in a fraction of the time a fully manual setup would take.</p>
+            <p><strong>Tech stack:</strong> AWS Amplify, React</p>
+        </div>
+
+         <div class="project">
+            <h2>This Website — Hosted on S3 & CloudFront</h2>
+            <p><strong>Goal:</strong> Put cloud and security skills into practice by hosting this very portfolio on production-grade AWS infrastructure rather than a third-party site builder.</p>
+            <p><strong>What I did:</strong> Configured an S3 bucket for static website hosting, then placed CloudFront in front of it as a CDN to serve content quickly to visitors anywhere in the world while reducing direct load on the origin bucket.</p>
+            <p><strong>Outcome:</strong> My first production AWS deployment — proof that the skills on this page aren't just theoretical, they're what's actually running this site right now.</p>
+            <p><strong>Tech stack:</strong> Amazon S3, Amazon CloudFront</p>
         </div>
      
 
