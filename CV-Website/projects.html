@@ -121,8 +121,9 @@
             <p><strong>What I did:</strong> Deployed a CloudFormation stack to stand up a repeatable test environment, then configured AWS WAF with Bot Control to detect and block automated traffic, layered in AWS Managed Rule Groups alongside custom rules tailored to the application's traffic patterns, and added CAPTCHA challenges on sensitive web forms to stop scripted submissions. Set up monitoring using CloudWatch metrics and dashboards, and used Athena to run SQL queries directly against WAF logs in S3 for deeper traffic analysis.</p>
             <p><strong>Outcome:</strong> A layered, monitored defense-in-depth setup — combining managed rules, custom rules, bot detection, and human-verification challenges — fully deployed and reproducible as infrastructure as code.</p>
             <p><strong>Tech stack:</strong> AWS WAF, CloudFormation, CloudWatch, Amazon Athena, S3</p>
+        </div>
         
-            <div class="project">
+        <div class="project">
             <h2>Secure Remote Access — AWS Verified Access</h2>
             <p><strong>Goal:</strong> Provide secure, identity-based access to private VPC resources without relying on a traditional VPN or exposed bastion host.</p>
             <p><strong>What I did:</strong> Deployed AWS Verified Access to enforce per-request access policies based on user identity and device context, using Cognito as the identity provider for authentication. Used an EC2 Instance Connect Endpoint to allow secure SSH access into private instances without public IPs, and packaged the entire setup as a CloudFormation stack so the architecture could be deployed and torn down consistently.</p>
