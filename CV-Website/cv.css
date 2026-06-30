@@ -677,12 +677,7 @@ Responsive CSS — sidebar becomes a top bar
     font-weight: 600;
     margin-bottom: 5px;
 }
-.lang-item span:hover{
-    display: block;
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: #fafafa;
-}
+
 .lang-bar {
     background: #eee;
     border-radius: 10px;
@@ -694,4 +689,7 @@ Responsive CSS — sidebar becomes a top bar
     background: #fa68a0;
     height: 100%;
     border-radius: 10px;
+}
+.skill:hover .lang-item span {
+    color: white;
 }
