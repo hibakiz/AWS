@@ -1,0 +1,205 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: My ZTNA Project Templetes. Updated on the go.
+Parameters:
+  EnvironmentName:
+    Type: String
+    Default: ZTNA-Test
+  
+  VpcCidr:
+    Type: String
+    Default: 10.0.0.0/16
+
+  PublicSubnetCidr:
+    Type: String
+    Default: 10.10.30.0/24
+  
+  PrivateDataSubnetCidr:
+    Type: String
+    Default: 10.10.10.0/24
+  
+  PrivateAppSubnetCidr:
+    Type: String
+    Default: 10.10.20.0/24
+
+Resources:
+  ### VPC ###
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref VpcCidr
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: !Sub ${EnvironmentName}-vpc
+ 
+  ### Internet Gateway ###
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: !Sub ${EnvironmentName}-igw
+ 
+  IGWAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref InternetGateway
+
+  PublicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: !Ref PublicSubnetCidr
+      AvailabilityZone: !Select [0, !GetAZs '']
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: !Sub ${EnvironmentName}-public-1
+        - Key: Tier
+          Value: public
+  
+  
+  AppSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: !Ref PrivateAppSubnetCidr
+      AvailabilityZone: !Select [0, !GetAZs '']
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: !Sub ${EnvironmentName}-private-App
+        - Key: Tier
+          Value: private-App
+  
+  DataSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: !Ref PrivateDataSubnetCidr
+      AvailabilityZone: !Select [0, !GetAZs '']
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: !Sub ${EnvironmentName}-private-Data
+        - Key: Tier
+          Value: private-Data
+
+ ### Public Route Table ###
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: !Sub ${EnvironmentName}-public-rt
+
+  PublicDefaultRoute:
+    Type: AWS::EC2::Route
+    DependsOn: IGWAttachment
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+
+  PublicSubnetRouteAssoc:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet
+      RouteTableId: !Ref PublicRouteTable
+
+  ### NAT Gateway (single) ###
+  NatEip:
+    Type: AWS::EC2::EIP
+    DependsOn: IGWAttachment
+    Properties:
+      Domain: vpc
+
+   NatGateway:
+    Type: AWS::EC2::NatGateway
+    Properties:
+      AllocationId: !GetAtt NatEip.AllocationId
+      SubnetId: !Ref PublicSubnet
+      Tags:
+        - Key: Name
+          Value: !Sub ${EnvironmentName}-nat
+ 
+  ### App (private) Route Table ###
+  AppRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: !Sub ${EnvironmentName}-app-rt
+ 
+  AppDefaultRoute:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref AppRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId: !Ref NatGateway
+ 
+  AppSubnetRouteAssoc:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref AppSubnet
+      RouteTableId: !Ref AppRouteTable
+ 
+  ### Data (private) Route Table ###
+  # Separate route table from App on purpose: the data tier has no default
+  # route to the NAT Gateway, so it has no outbound internet path at all.
+  # Add a route here later only if something in the data tier truly needs
+  # outbound access (e.g., for patching via an endpoint or the NAT).
+  DataRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: !Sub ${EnvironmentName}-data-rt
+ 
+  DataSubnetRouteAssoc:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref DataSubnet
+      RouteTableId: !Ref DataRouteTable
+ 
+Outputs:
+  VpcId:
+    Description: VPC ID
+    Value: !Ref VPC
+    Export:
+      Name: !Sub ${EnvironmentName}-VpcId
+ 
+  VpcCidr:
+    Description: VPC CIDR block
+    Value: !Ref VpcCidr
+    Export:
+      Name: !Sub ${EnvironmentName}-VpcCidr
+ 
+  PublicSubnetId:
+    Description: Public subnet ID (FortiGate external interface / AVA ingress)
+    Value: !Ref PublicSubnet
+    Export:
+      Name: !Sub ${EnvironmentName}-PublicSubnetId
+ 
+  AppSubnetId:
+    Description: Private app-tier subnet ID (FortiGate internal interface / workloads)
+    Value: !Ref AppSubnet
+    Export:
+      Name: !Sub ${EnvironmentName}-AppSubnetId
+ 
+  DataSubnetId:
+    Description: Private data-tier subnet ID (no outbound internet route by default)
+    Value: !Ref DataSubnet
+    Export:
+      Name: !Sub ${EnvironmentName}-DataSubnetId
+ 
+  NatGatewayId:
+    Description: NAT Gateway ID
+    Value: !Ref NatGateway
+    Export:
+      Name: !Sub ${EnvironmentName}-NatGatewayId
